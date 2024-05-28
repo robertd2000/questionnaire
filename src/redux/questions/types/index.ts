@@ -1,9 +1,10 @@
 import { Question } from "../../../types/questions";
 
 export interface InitialState {
-  currentQuestion: Question;
+  currentQuestion: Question | null;
   questions: Question[];
   answers: Answer[];
+  isLoading: boolean;
 }
 
 export interface Answer {
