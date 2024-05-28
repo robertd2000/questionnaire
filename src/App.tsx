@@ -1,5 +1,7 @@
+import { Providers } from "./components/Providers";
+
 function App() {
-  return <>Hi</>;
+  return <Providers>Hi</Providers>;
 }
 
 export default App;
