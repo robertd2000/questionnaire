@@ -1,9 +1,10 @@
-import { Button, Steps } from "antd";
+import { Button } from "antd";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { useEffect } from "react";
 import { fetchQuestions } from "../../redux/questions/api/asyncActions";
 import { Question } from "../Question";
 import { moveToNextQuestion } from "../../redux/questions/slice";
+import { QuestionSteps } from "../QuestionSteps";
 
 export const Questions = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,7 @@ export const Questions = () => {
     "Loading"
   ) : (
     <div>
-      <Steps />
+      <QuestionSteps />
 
       <Question />
       <Button onClick={nextQuestion}>Next</Button>
