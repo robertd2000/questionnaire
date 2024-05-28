@@ -1,18 +1,37 @@
 import { useEffect } from "react";
 import { Form } from "antd";
 import { fetchQuestions } from "../../../redux/questions/api/asyncActions";
-import { moveToNextQuestion } from "../../../redux/questions/slice";
+import { moveToNextQuestion, setAnswer } from "../../../redux/questions/slice";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
 export const useQuestions = () => {
   const dispatch = useAppDispatch();
 
+  const { isLoading, currentQuestion, currentQuestionSequenceNumber } =
+    useAppSelector((state) => state.questionsSlice);
+
   const [form] = Form.useForm();
   const answer = Form.useWatch("answer", form);
 
+  const nextQuestion = () => {
+    dispatch(moveToNextQuestion());
+  };
+
+  const onAnswer = (answerData: string | string[]) => {
+    const answerPayload = {
+      question: currentQuestionSequenceNumber,
+      answer: answerData,
+      correct_answer: currentQuestion?.correct_answer,
+      isCorrect:
+        currentQuestion?.correct_answer == answerData ||
+        answerData.includes(currentQuestion?.correct_answer as string),
+    };
+    dispatch(setAnswer(answerPayload));
+  };
+
   const onSubmit = () => {
     form.validateFields().then((data) => {
-      console.log("data", data);
+      onAnswer(data.answer);
       nextQuestion();
       form.resetFields();
     });
@@ -23,14 +42,6 @@ export const useQuestions = () => {
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
-
-  const nextQuestion = () => {
-    dispatch(moveToNextQuestion());
-  };
-
-  const { isLoading, currentQuestion } = useAppSelector(
-    (state) => state.questionsSlice
-  );
 
   return {
     isLoading,

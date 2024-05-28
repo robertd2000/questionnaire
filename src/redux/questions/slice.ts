@@ -12,6 +12,10 @@ export const questionsSlice = createSlice({
         state.questions[state.currentQuestionSequenceNumber];
       state.currentQuestion = currentQuestion;
     },
+    setAnswer(state, { payload }) {
+      state.answers.push(payload);
+      moveToNextQuestion();
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchQuestions.pending, (state) => {
@@ -28,5 +32,5 @@ export const questionsSlice = createSlice({
   },
 });
 
-export const { moveToNextQuestion } = questionsSlice.actions;
+export const { moveToNextQuestion, setAnswer } = questionsSlice.actions;
 export default questionsSlice.reducer;
