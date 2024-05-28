@@ -3,11 +3,10 @@ import { Question } from "../Question";
 import { QuestionSteps } from "../QuestionSteps";
 import { Spinner } from "../ui/Spinner";
 import { useQuestions } from "./hooks/useQuestions";
-import { useQuestionsForm } from "./hooks/useQuestionsForm";
 
 export const Questions = () => {
-  const { isLoading, currentQuestion, nextQuestion } = useQuestions();
-  const { form, isDisabled, onSubmit } = useQuestionsForm(nextQuestion);
+  const { isLoading, currentQuestion, form, isDisabled, onSubmit } =
+    useQuestions();
 
   return isLoading ? (
     <Spinner />
