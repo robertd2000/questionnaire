@@ -1,7 +1,7 @@
 import { Button, Form } from "antd";
 import { Question } from "../Question";
 import { QuestionSteps } from "../QuestionSteps";
-import { Spinner } from "../Spinner";
+import { Spinner } from "../ui/Spinner";
 import { useQuestions } from "./hooks/useQuestions";
 import { useQuestionsForm } from "./hooks/useQuestionsForm";
 
