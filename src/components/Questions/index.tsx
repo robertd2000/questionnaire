@@ -1,6 +1,7 @@
 import { Button, Form } from "antd";
 import { Question } from "../Question";
 import { QuestionSteps } from "../QuestionSteps";
+import { Spinner } from "../Spinner";
 import { useQuestions } from "./hooks/useQuestions";
 import { useQuestionsForm } from "./hooks/useQuestionsForm";
 
@@ -9,7 +10,7 @@ export const Questions = () => {
   const { form, isDisabled, onSubmit } = useQuestionsForm(nextQuestion);
 
   return isLoading ? (
-    "Loading"
+    <Spinner />
   ) : (
     <Form layout="vertical" form={form} onFinish={onSubmit}>
       <QuestionSteps />
