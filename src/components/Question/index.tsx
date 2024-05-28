@@ -1,4 +1,4 @@
-import { Card, Form } from "antd";
+import { Card } from "antd";
 import { useAppSelector } from "../../redux/store";
 import style from "../../styles/components/question/question.module.scss";
 import { Answers } from "../Answers";
@@ -8,7 +8,7 @@ export const Question = () => {
 
   return (
     <Card className={style.questionCard}>
-      <Form>
+      <>
         <p
           dangerouslySetInnerHTML={{
             __html: currentQuestion?.question as string,
@@ -16,7 +16,7 @@ export const Question = () => {
         />
 
         <Answers />
-      </Form>
+      </>
     </Card>
   );
 };

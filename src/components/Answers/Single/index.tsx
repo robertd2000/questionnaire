@@ -4,14 +4,14 @@ import { AnswersProps } from "../types";
 
 export const SingleAnswers: FC<AnswersProps> = ({ options }) => {
   return (
-    <Radio.Group>
-      <Space direction="vertical">
-        {options.map((option) => (
-          <Form.Item name={option} valuePropName="checked">
-            <Radio>{option}</Radio>
-          </Form.Item>
-        ))}
-      </Space>
-    </Radio.Group>
+    <Form.Item name="answer">
+      <Radio.Group>
+        <Space direction="vertical">
+          {options.map((option) => (
+            <Radio value={option}>{option}</Radio>
+          ))}
+        </Space>
+      </Radio.Group>
+    </Form.Item>
   );
 };
