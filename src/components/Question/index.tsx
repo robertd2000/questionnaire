@@ -1,6 +1,7 @@
 import { Card, Form } from "antd";
 import { useAppSelector } from "../../redux/store";
 import style from "../../styles/components/question/question.module.scss";
+import { Answers } from "../Answers";
 
 export const Question = () => {
   const { currentQuestion } = useAppSelector((state) => state.questionsSlice);
@@ -13,6 +14,8 @@ export const Question = () => {
             __html: currentQuestion?.question as string,
           }}
         />
+
+        <Answers />
       </Form>
     </Card>
   );
