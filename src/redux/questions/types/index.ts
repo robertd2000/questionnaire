@@ -2,6 +2,7 @@ import { Question } from "../../../types/questions";
 
 export interface InitialState {
   currentQuestion: Question | null;
+  currentQuestionSequenceNumber: number;
   questions: Question[];
   answers: Answer[];
   isLoading: boolean;

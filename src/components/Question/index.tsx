@@ -1,5 +1,8 @@
 import { Form } from "antd";
+import { useAppSelector } from "../../redux/store";
 
 export const Question = () => {
-  return <Form>Question</Form>;
+  const { currentQuestion } = useAppSelector((state) => state.questionsSlice);
+
+  return <Form>{currentQuestion?.question}</Form>;
 };

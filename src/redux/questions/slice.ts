@@ -5,7 +5,14 @@ import { fetchQuestions } from "./api/asyncActions";
 export const questionsSlice = createSlice({
   name: "questions",
   initialState,
-  reducers: {},
+  reducers: {
+    moveToNextQuestion(state) {
+      state.currentQuestionSequenceNumber++;
+      const currentQuestion =
+        state.questions[state.currentQuestionSequenceNumber];
+      state.currentQuestion = currentQuestion;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchQuestions.pending, (state) => {
       state.isLoading = true;
@@ -21,5 +28,5 @@ export const questionsSlice = createSlice({
   },
 });
 
-export const {} = questionsSlice.actions;
+export const { moveToNextQuestion } = questionsSlice.actions;
 export default questionsSlice.reducer;
