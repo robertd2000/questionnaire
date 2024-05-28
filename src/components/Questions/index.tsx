@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Form } from "antd";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { useEffect } from "react";
 import { fetchQuestions } from "../../redux/questions/api/asyncActions";
@@ -8,6 +8,7 @@ import { QuestionSteps } from "../QuestionSteps";
 
 export const Questions = () => {
   const dispatch = useAppDispatch();
+  const [form] = Form.useForm();
 
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -17,16 +18,26 @@ export const Questions = () => {
     dispatch(moveToNextQuestion());
   };
 
-  const { isLoading } = useAppSelector((state) => state.questionsSlice);
+  const { isLoading, currentQuestion } = useAppSelector(
+    (state) => state.questionsSlice
+  );
+
+  const onSubmit = () => {
+    form.validateFields().then((data) => {
+      console.log("data", data);
+      nextQuestion();
+    });
+  };
 
   return isLoading ? (
     "Loading"
   ) : (
-    <div>
+    <Form layout="vertical" form={form} onFinish={onSubmit}>
       <QuestionSteps />
-
-      <Question />
-      <Button onClick={nextQuestion}>Next</Button>
-    </div>
+      {currentQuestion && <Question />}{" "}
+      <Button type="primary" htmlType="submit">
+        Next
+      </Button>
+    </Form>
   );
 };
