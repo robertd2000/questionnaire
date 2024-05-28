@@ -6,8 +6,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/questionnaire/",
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+    alias: {},
   },
 });

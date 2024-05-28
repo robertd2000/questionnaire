@@ -17,15 +17,16 @@ export const Questions = () => {
     dispatch(moveToNextQuestion());
   };
 
-  const { isLoading } = useAppSelector((state) => state.questionsSlice);
+  const { isLoading, currentQuestion } = useAppSelector(
+    (state) => state.questionsSlice
+  );
 
   return isLoading ? (
     "Loading"
   ) : (
     <div>
       <QuestionSteps />
-
-      <Question />
+      {currentQuestion && <Question />}{" "}
       <Button onClick={nextQuestion}>Next</Button>
     </div>
   );
