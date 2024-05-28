@@ -1,12 +1,14 @@
 import { FC } from "react";
+import { Checkbox, Form, Space } from "antd";
 import { AnswersProps } from "../types";
-import { Checkbox, Space } from "antd";
 
 export const MultipleAnswers: FC<AnswersProps> = ({ options }) => {
   return (
     <Space direction="vertical">
       {options.map((option) => (
-        <Checkbox>{option}</Checkbox>
+        <Form.Item name={option}>
+          <Checkbox>{option}</Checkbox>
+        </Form.Item>
       ))}
     </Space>
   );
