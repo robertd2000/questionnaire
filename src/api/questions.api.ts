@@ -1,5 +1,5 @@
-import { QuestionsQuery } from "../types/questions";
 import base from "./base";
+import { QuestionsQuery } from "../types/questions";
 
 export const getQuestions = async (): Promise<QuestionsQuery> => {
   const { data } = await base.get("/", {

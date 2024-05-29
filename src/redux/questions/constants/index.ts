@@ -6,6 +6,7 @@ export const initialState: InitialState = {
   currentQuestionSequenceNumber: 0,
   questions: [],
   answers: [],
+  error: null,
   score: {
     totalAmount: 0,
     correct: 0,

@@ -3,6 +3,7 @@ import { initialState } from "./constants";
 import { fetchQuestions } from "./api/asyncActions";
 import { checkIsCorrect } from "../../utils/check";
 import { DifficultyType } from "../../types/questions";
+import { ERROR_MESSAGE } from "../../constants";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -44,12 +45,24 @@ export const questionsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchQuestions.fulfilled, (state, { payload }) => {
-      state.questions = payload.results;
-      state.currentQuestion = payload.results?.[0];
-      state.score.totalAmount = state.questions.length;
+      if (payload.response_code === 0) {
+        state.questions = payload.results;
+        state.currentQuestion = payload.results?.[0];
+        state.score.totalAmount = state.questions.length;
+        state.error = null;
+      } else {
+        state.error = {
+          message: ERROR_MESSAGE,
+        };
+      }
+
       state.isLoading = false;
     });
     builder.addCase(fetchQuestions.rejected, (state) => {
+      if (!state.questions.length)
+        state.error = {
+          message: ERROR_MESSAGE,
+        };
       state.isLoading = false;
     });
   },
