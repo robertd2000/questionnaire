@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { capitalizeString, getDifficultyColumnColors } from "./utils";
+import { getDifficultyColumnColors } from "./utils";
+import { capitalizeString } from "../../../utils/strings";
 import { DifficultyType } from "../../../types/questions";
 
 interface Props {

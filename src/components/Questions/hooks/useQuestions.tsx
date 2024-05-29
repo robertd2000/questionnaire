@@ -34,7 +34,7 @@ export const useQuestions = () => {
 
   useEffect(() => {
     dispatch(fetchQuestions());
-  }, []);
+  }, [score.totalAmount]);
 
   return {
     isLoading,

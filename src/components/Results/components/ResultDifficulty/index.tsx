@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { Typography, Progress } from "antd";
+import { Typography, Progress, ConfigProvider } from "antd";
 import { ScoreResult } from "../../../../redux/questions/types";
 import { percentage } from "../../../../utils/math";
 import { getColor } from "../../../../utils/color";
 import { DifficultyType } from "../../../../types/questions";
+import { capitalizeString } from "../../../../utils/strings";
 
 interface Props {
   score: ScoreResult;
@@ -15,7 +16,13 @@ export const ResultDifficulty: FC<Props> = ({ score, difficulty }) => {
   const color = getColor(difficulty);
 
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontSize: 19,
+        },
+      }}
+    >
       <Typography.Title level={5}>
         <span
           style={{
@@ -23,11 +30,16 @@ export const ResultDifficulty: FC<Props> = ({ score, difficulty }) => {
             color,
           }}
         >
-          Easy
+          {capitalizeString(difficulty)}
         </span>{" "}
         questions:
       </Typography.Title>
-      <Progress percent={percent} status="active" strokeColor={color} />
-    </>
+      <Progress
+        percent={percent}
+        status="active"
+        strokeColor={color}
+        size={"small"}
+      />
+    </ConfigProvider>
   );
 };

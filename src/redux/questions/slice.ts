@@ -35,8 +35,8 @@ export const questionsSlice = createSlice({
         state.score.byDificulty[difficulty].correct++;
       }
     },
-    clearState(state) {
-      state = initialState;
+    resetState() {
+      return initialState;
     },
   },
   extraReducers: (builder) => {
@@ -55,5 +55,6 @@ export const questionsSlice = createSlice({
   },
 });
 
-export const { moveToNextQuestion, setAnswer } = questionsSlice.actions;
+export const { moveToNextQuestion, setAnswer, resetState } =
+  questionsSlice.actions;
 export default questionsSlice.reducer;
