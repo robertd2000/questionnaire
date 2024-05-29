@@ -1,8 +1,8 @@
 import { Card } from "antd";
 import { useAppSelector } from "../../redux/store";
 import { Answers } from "../Answers";
-import style from "../../styles/components/question/question.module.scss";
 import { QuestionHeader } from "../QuestionHeader";
+import style from "../../styles/components/question/question.module.scss";
 
 export const Question = () => {
   const { currentQuestion } = useAppSelector((state) => state.questionsSlice);

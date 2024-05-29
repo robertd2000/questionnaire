@@ -21,7 +21,6 @@ export const DifficultyBadge: FC<Props> = ({ difficulty }) => {
         width="16"
         height="16"
         viewBox="0 0 16 16"
-        fill="rgb(220, 220, 220)"
         xmlns="http://www.w3.org/2000/svg"
         data-component-name="DifficultyLevelIcon"
       >

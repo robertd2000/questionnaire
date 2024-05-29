@@ -1,11 +1,13 @@
+import { Colors } from "../../../constants";
 import { DifficultyType } from "../../../types/questions";
 
 export const getColor = (difficulty: DifficultyType, columns: number) => {
-  if (difficulty === "easy" && columns === 1) return "green";
-  else if (difficulty === "medium" && columns <= 2) return "orange";
-  else if (difficulty === "hard" && columns <= 3) return "red";
-  return "rgb(220, 220, 220)";
+  if (difficulty === "easy" && columns === 1) return Colors.green;
+  else if (difficulty === "medium" && columns <= 2) return Colors.orange;
+  else if (difficulty === "hard" && columns <= 3) return Colors.red;
+  return Colors.darkGray;
 };
+
 export const getColors = (difficulty: DifficultyType) => {
   const colors = {
     first: getColor(difficulty, 1),
