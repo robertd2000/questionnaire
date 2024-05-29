@@ -1,9 +1,8 @@
 import { Card } from "antd";
 import { useAppSelector } from "../../redux/store";
 import { Answers } from "../Answers";
-import { DifficultyBadge } from "../Difficulty";
-import { DifficultyType } from "../../types/questions";
 import style from "../../styles/components/question/question.module.scss";
+import { QuestionHeader } from "../QuestionHeader";
 
 export const Question = () => {
   const { currentQuestion } = useAppSelector((state) => state.questionsSlice);
@@ -11,9 +10,7 @@ export const Question = () => {
   return (
     <Card className={style.questionCard}>
       <>
-        <DifficultyBadge
-          difficulty={currentQuestion?.difficulty as DifficultyType}
-        />
+        <QuestionHeader currentQuestion={currentQuestion} />
         <p
           dangerouslySetInnerHTML={{
             __html: currentQuestion?.question as string,
