@@ -5,7 +5,6 @@ export const getQuestions = async (): Promise<QuestionsQuery> => {
   const { data } = await base.get("/", {
     params: {
       amount: 10,
-      difficulty: "any",
     },
   });
 

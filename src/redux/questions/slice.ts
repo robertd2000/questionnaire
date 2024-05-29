@@ -50,18 +50,20 @@ export const questionsSlice = createSlice({
         state.currentQuestion = payload.results?.[0];
         state.score.totalAmount = state.questions.length;
         state.error = null;
+      } else {
+        state.error = {
+          message: ERROR_MESSAGE,
+        };
       }
 
       state.isLoading = false;
-      state.error = {
-        message: ERROR_MESSAGE,
-      };
     });
     builder.addCase(fetchQuestions.rejected, (state) => {
+      if (!state.questions.length)
+        state.error = {
+          message: ERROR_MESSAGE,
+        };
       state.isLoading = false;
-      state.error = {
-        message: ERROR_MESSAGE,
-      };
     });
   },
 });
