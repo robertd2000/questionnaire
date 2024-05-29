@@ -1,14 +1,18 @@
 import { FC } from "react";
+import { Typography, Progress } from "antd";
 import { ScoreResult } from "../../../../redux/questions/types";
-import { Progress, Typography } from "antd";
 import { percentage } from "../../../../utils/math";
-import { Colors } from "../../../../constants";
+import { getColor } from "../../../../utils/color";
+import { DifficultyType } from "../../../../types/questions";
 
 interface Props {
   score: ScoreResult;
+  difficulty: DifficultyType;
 }
-export const ResultsMedium: FC<Props> = ({ score }) => {
+
+export const ResultDifficulty: FC<Props> = ({ score, difficulty }) => {
   const percent = percentage(score.correct, score.totalAmount);
+  const color = getColor(difficulty);
 
   return (
     <>
@@ -16,14 +20,14 @@ export const ResultsMedium: FC<Props> = ({ score }) => {
         <span
           style={{
             textDecoration: "underline",
-            color: Colors.orange,
+            color,
           }}
         >
-          Medium
+          Easy
         </span>{" "}
         questions:
       </Typography.Title>
-      <Progress percent={percent} status="active" strokeColor={Colors.orange} />
+      <Progress percent={percent} status="active" strokeColor={color} />
     </>
   );
 };
