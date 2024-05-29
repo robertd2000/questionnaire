@@ -7,10 +7,11 @@ export const AntdProvider: FC<ProviderProps> = ({ children }) => {
     <ConfigProvider
       theme={{
         token: {
-          fontFamily: "Roboto",
-          fontSize: 18,
-          colorText: "#404140",
+          fontFamily: "PT Root UI",
+          fontSize: 20,
+          colorText: "rgb(0, 0, 0)",
           fontWeightStrong: 500,
+          lineHeight: 2,
         },
       }}
     >

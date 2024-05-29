@@ -3,6 +3,7 @@ import { Form } from "antd";
 import { fetchQuestions } from "../../../redux/questions/api/asyncActions";
 import { moveToNextQuestion, setAnswer } from "../../../redux/questions/slice";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { checkIsCorrect } from "../../../utils/check";
 
 export const useQuestions = () => {
   const dispatch = useAppDispatch();
@@ -22,9 +23,10 @@ export const useQuestions = () => {
       question: currentQuestionSequenceNumber,
       answer: answerData,
       correct_answer: currentQuestion?.correct_answer,
-      isCorrect:
-        currentQuestion?.correct_answer == answerData ||
-        answerData.includes(currentQuestion?.correct_answer as string),
+      isCorrect: checkIsCorrect(
+        currentQuestion?.correct_answer as string,
+        answerData
+      ),
     };
     dispatch(setAnswer(answerPayload));
   };

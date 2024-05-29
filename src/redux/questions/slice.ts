@@ -14,7 +14,6 @@ export const questionsSlice = createSlice({
     },
     setAnswer(state, { payload }) {
       state.answers.push(payload);
-      moveToNextQuestion();
     },
   },
   extraReducers: (builder) => {
