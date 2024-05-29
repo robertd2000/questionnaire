@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { capitalizeString, getColors } from "./utils";
+import { capitalizeString, getDifficultyColumnColors } from "./utils";
 import { DifficultyType } from "../../../types/questions";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const DifficultyBadge: FC<Props> = ({ difficulty }) => {
-  const { first, second, third } = getColors(difficulty);
+  const { first, second, third } = getDifficultyColumnColors(difficulty);
 
   return (
     <div
