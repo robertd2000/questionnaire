@@ -15,7 +15,7 @@ export const ResultsHeader = () => {
             color: getScoreColor(correctPercent),
           }}
         >
-          {correctPercent} %
+          {correctPercent.toFixed(2)} %
         </span>
       </Typography.Title>
       <Typography.Title level={5}>

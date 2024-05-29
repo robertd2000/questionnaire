@@ -4,3 +4,9 @@ body {
   background-color: rgb(250, 250, 250);
   padding: 0 15%;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 5%;
+  }
+}
