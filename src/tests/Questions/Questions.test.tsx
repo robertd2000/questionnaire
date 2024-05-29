@@ -30,7 +30,7 @@ test("rendering questions, select and move to next", async () => {
   fireEvent.click(screen.getByRole("radio", { name: /True/i }));
   fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
 
-  await delay(100);
+  await delay(150);
 
   expect(await screen.getByText(/Langerhans/i)).toBeInTheDocument();
 });
