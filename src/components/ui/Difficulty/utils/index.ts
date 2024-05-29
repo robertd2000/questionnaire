@@ -1,5 +1,5 @@
-import { Colors } from "../../../constants";
-import { DifficultyType } from "../../../types/questions";
+import { Colors } from "../../../../constants";
+import { DifficultyType } from "../../../../types/questions";
 
 export const getColor = (difficulty: DifficultyType, columns: number) => {
   if (difficulty === "easy" && columns === 1) return Colors.green;

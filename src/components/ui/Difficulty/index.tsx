@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { capitalizeString, getColors } from "./utils";
-import { DifficultyType } from "../../types/questions";
+import { DifficultyType } from "../../../types/questions";
 
 interface Props {
   difficulty: DifficultyType;
