@@ -16,7 +16,12 @@ export const Questions = () => {
       <QuestionSteps />
       {currentQuestion && hasNext ? <Question /> : <Results />}{" "}
       {hasNext && (
-        <Button type="primary" htmlType="submit" disabled={isDisabled}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          disabled={isDisabled}
+          size="large"
+        >
           Send
         </Button>
       )}

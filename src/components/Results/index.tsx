@@ -25,7 +25,7 @@ export const Results = () => {
       <Divider />
 
       <div className={style.startButton}>
-        <Button type="primary" onClick={startQuestionaire}>
+        <Button type="primary" size="large" onClick={startQuestionaire}>
           Try again
         </Button>
       </div>
