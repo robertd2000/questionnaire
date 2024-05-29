@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./constants";
 import { fetchQuestions } from "./api/asyncActions";
 import { checkIsCorrect } from "../../utils/check";
-import { Difficulty } from "../../types/questions";
+import { DifficultyType } from "../../types/questions";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -28,7 +28,7 @@ export const questionsSlice = createSlice({
       };
       state.answers.push(answer);
 
-      const difficulty = state.currentQuestion?.difficulty as Difficulty;
+      const difficulty = state.currentQuestion?.difficulty as DifficultyType;
       state.score.byDificulty[difficulty].totalAmount++;
       if (isCorrect) {
         state.score.correct++;
