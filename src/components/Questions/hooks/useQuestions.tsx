@@ -27,7 +27,7 @@ export const useQuestions = () => {
     dispatch(setAnswer(answerPayload.toString()));
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = () => {
     form.validateFields().then((data) => {
       onAnswer(data.answer);
       nextQuestion();
