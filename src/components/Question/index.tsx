@@ -1,7 +1,8 @@
 import { Card } from "antd";
 import { useAppSelector } from "../../redux/store";
-import style from "../../styles/components/question/question.module.scss";
 import { Answers } from "../Answers";
+import { QuestionHeader } from "../QuestionHeader";
+import style from "../../styles/components/question/question.module.scss";
 
 export const Question = () => {
   const { currentQuestion } = useAppSelector((state) => state.questionsSlice);
@@ -9,6 +10,7 @@ export const Question = () => {
   return (
     <Card className={style.questionCard}>
       <>
+        <QuestionHeader currentQuestion={currentQuestion} />
         <p
           dangerouslySetInnerHTML={{
             __html: currentQuestion?.question as string,

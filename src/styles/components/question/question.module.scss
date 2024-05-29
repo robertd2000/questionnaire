@@ -5,3 +5,28 @@
 .questionCard {
   margin: 1rem 0;
 }
+
+.questionPopoverTitle {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 350;
+}
+
+.questionPopoverContent {
+  max-width: 200px;
+  color: white;
+  font-size: 17px;
+}
+
+.questionPopoverDescription {
+  font-size: 15px;
+  color: #b6b8ba;
+  font-weight: 250;
+  line-height: 1.5em;
+}
+
+.questionPopoverInner {
+  margin: 0;
+  padding: 0;
+}
