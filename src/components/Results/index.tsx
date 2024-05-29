@@ -1,7 +1,7 @@
 import { Card, Divider } from "antd";
 import { useResults } from "./hooks/useResults";
 import style from "../../styles/components/result/result.module.scss";
-import { ResultsEasy, ResultsHeader } from "./components";
+import { ResultsEasy, ResultsHeader, ResultsMedium } from "./components";
 
 export const Results = () => {
   const { byDificulty } = useResults();
@@ -12,6 +12,9 @@ export const Results = () => {
       <Divider />
       {byDificulty.easy.totalAmount > 0 && (
         <ResultsEasy score={byDificulty.easy} />
+      )}
+      {byDificulty.medium.totalAmount > 0 && (
+        <ResultsMedium score={byDificulty.medium} />
       )}
     </Card>
   );
