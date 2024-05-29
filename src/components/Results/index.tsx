@@ -1,16 +1,18 @@
-import { Card, Typography } from "antd";
+import { Card, Divider } from "antd";
 import { useResults } from "./hooks/useResults";
 import style from "../../styles/components/result/result.module.scss";
+import { ResultsEasy, ResultsHeader } from "./components";
 
 export const Results = () => {
-  const { totalAmount, correct, correctPercent, byDificulty } = useResults();
+  const { byDificulty } = useResults();
 
   return (
     <Card className={style.resultCard}>
-      <Typography.Title level={5}>
-        Your score: {correct} / {totalAmount}
-      </Typography.Title>
-      <Typography.Title level={5}>{correctPercent}%</Typography.Title>
+      <ResultsHeader />
+      <Divider />
+      {byDificulty.easy.totalAmount > 0 && (
+        <ResultsEasy score={byDificulty.easy} />
+      )}
     </Card>
   );
 };
