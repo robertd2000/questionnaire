@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./constants/indes";
 import { fetchQuestions } from "./api/asyncActions";
+import { checkIsCorrect } from "../../utils/check";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -11,6 +12,18 @@ export const questionsSlice = createSlice({
       const currentQuestion =
         state.questions[state.currentQuestionSequenceNumber];
       state.currentQuestion = currentQuestion;
+    },
+    setAnswer(state, { payload }: { payload: string }) {
+      const answer = {
+        question: state.currentQuestionSequenceNumber,
+        answer: payload,
+        correct_answer: state.currentQuestion?.correct_answer as string,
+        isCorrect: checkIsCorrect(
+          state.currentQuestion?.correct_answer as string,
+          payload
+        ),
+      };
+      state.answers.push(answer);
     },
   },
   extraReducers: (builder) => {
@@ -28,5 +41,5 @@ export const questionsSlice = createSlice({
   },
 });
 
-export const { moveToNextQuestion } = questionsSlice.actions;
+export const { moveToNextQuestion, setAnswer } = questionsSlice.actions;
 export default questionsSlice.reducer;

@@ -5,7 +5,7 @@ import { Questions } from "./components/Questions";
 function App() {
   return (
     <Providers>
-      <Typography.Title level={5}>Questionare</Typography.Title>
+      <Typography.Title level={3}>Questionare</Typography.Title>
       <Questions />
     </Providers>
   );
