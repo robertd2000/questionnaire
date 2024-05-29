@@ -7,6 +7,11 @@ export interface InitialState {
   answers: Answer[];
   isLoading: boolean;
   score: Score;
+  error: Error | null;
+}
+
+export interface Error {
+  message: string;
 }
 
 export interface Answer {
