@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./constants/indes";
+import { initialState } from "./constants";
 import { fetchQuestions } from "./api/asyncActions";
 import { checkIsCorrect } from "../../utils/check";
+import { Difficulty } from "../../types/questions";
 
 export const questionsSlice = createSlice({
   name: "questions",
@@ -14,16 +15,28 @@ export const questionsSlice = createSlice({
       state.currentQuestion = currentQuestion;
     },
     setAnswer(state, { payload }: { payload: string }) {
+      const isCorrect = checkIsCorrect(
+        state.currentQuestion?.correct_answer as string,
+        payload
+      );
+
       const answer = {
         question: state.currentQuestionSequenceNumber,
         answer: payload,
         correct_answer: state.currentQuestion?.correct_answer as string,
-        isCorrect: checkIsCorrect(
-          state.currentQuestion?.correct_answer as string,
-          payload
-        ),
+        isCorrect,
       };
       state.answers.push(answer);
+
+      const difficulty = state.currentQuestion?.difficulty as Difficulty;
+      state.score.byDificulty[difficulty].totalAmount++;
+      if (isCorrect) {
+        state.score.correct++;
+        state.score.byDificulty[difficulty].correct++;
+      }
+    },
+    clearState(state) {
+      state = initialState;
     },
   },
   extraReducers: (builder) => {
@@ -33,6 +46,7 @@ export const questionsSlice = createSlice({
     builder.addCase(fetchQuestions.fulfilled, (state, { payload }) => {
       state.questions = payload.results;
       state.currentQuestion = payload.results?.[0];
+      state.score.totalAmount = state.questions.length;
       state.isLoading = false;
     });
     builder.addCase(fetchQuestions.rejected, (state) => {

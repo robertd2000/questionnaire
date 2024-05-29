@@ -17,7 +17,7 @@ export interface Answer {
 }
 
 export interface Score extends ScoreResult {
-  byDificulty: Difficulty;
+  byDificulty: DifficultyCategories;
 }
 
 export interface ScoreResult {
@@ -25,7 +25,7 @@ export interface ScoreResult {
   correct: number;
 }
 
-export interface Difficulty {
+export interface DifficultyCategories {
   easy: ScoreResult;
   medium: ScoreResult;
   hard: ScoreResult;

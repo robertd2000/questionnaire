@@ -3,9 +3,11 @@ export interface QuestionsQuery {
   results: Question[];
 }
 
+export type Difficulty = "easy" | "medium" | "hard";
+
 export interface Question {
   type: string;
-  difficulty: string;
+  difficulty: Difficulty;
   category: string;
   question: string;
   correct_answer: string;
