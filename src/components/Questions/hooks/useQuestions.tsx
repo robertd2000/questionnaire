@@ -7,9 +7,8 @@ import { useAppDispatch, useAppSelector } from "../../../redux/store";
 export const useQuestions = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, currentQuestion } = useAppSelector(
-    (state) => state.questionsSlice
-  );
+  const { isLoading, score, currentQuestion, currentQuestionSequenceNumber } =
+    useAppSelector((state) => state.questionsSlice);
 
   const [form] = Form.useForm();
   const answer = Form.useWatch("answer", form);
@@ -31,16 +30,18 @@ export const useQuestions = () => {
   };
 
   const isDisabled = !answer?.length;
+  const hasNext = currentQuestionSequenceNumber < score.totalAmount;
 
   useEffect(() => {
     dispatch(fetchQuestions());
-  }, []);
+  }, [score.totalAmount]);
 
   return {
     isLoading,
     currentQuestion,
     form,
     isDisabled,
+    hasNext,
     onSubmit,
   };
 };

@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { capitalizeString, getColors } from "./utils";
-import { DifficultyType } from "../../types/questions";
+import { getDifficultyColumnColors } from "./utils";
+import { capitalizeString } from "../../../utils/strings";
+import { DifficultyType } from "../../../types/questions";
 
 interface Props {
   difficulty: DifficultyType;
 }
 
 export const DifficultyBadge: FC<Props> = ({ difficulty }) => {
-  const { first, second, third } = getColors(difficulty);
+  const { first, second, third } = getDifficultyColumnColors(difficulty);
 
   return (
     <div

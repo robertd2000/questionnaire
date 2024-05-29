@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import { useAppSelector } from "../../redux/store";
 import { Answers } from "../Answers";
-import { QuestionHeader } from "../QuestionHeader";
+import { QuestionBody, QuestionHeader } from "./components";
 import style from "../../styles/components/question/question.module.scss";
 
 export const Question = () => {
@@ -11,11 +11,7 @@ export const Question = () => {
     <Card className={style.questionCard}>
       <>
         <QuestionHeader currentQuestion={currentQuestion} />
-        <p
-          dangerouslySetInnerHTML={{
-            __html: currentQuestion?.question as string,
-          }}
-        />
+        <QuestionBody question={currentQuestion?.question} />
 
         <Answers />
       </>

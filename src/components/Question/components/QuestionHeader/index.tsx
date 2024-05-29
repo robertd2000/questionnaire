@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Button, ConfigProvider, Popover, theme } from "antd";
-import { DifficultyBadge } from "../ui";
-import { Question, DifficultyType } from "../../types/questions";
-import style from "../../styles/components/question/question.module.scss";
+import { DifficultyBadge } from "../../../ui";
+import { DifficultyType, Question } from "../../../../types/questions";
+import style from "../../../../styles/components/question/question.module.scss";
 
 interface Props {
   currentQuestion: Question | null;
