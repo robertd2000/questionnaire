@@ -39,6 +39,7 @@ export const ResultDifficulty: FC<Props> = ({ score, difficulty }) => {
         status="active"
         strokeColor={color}
         size={"small"}
+        format={(p) => p?.toFixed(1) + "%"}
       />
     </ConfigProvider>
   );
