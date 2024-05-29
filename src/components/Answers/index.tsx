@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { ConfigProvider } from "antd";
 import { useAppSelector } from "../../redux/store";
-import { MultipleAnswers } from "./Multiple";
-import { SingleAnswers } from "./Single";
+import { MultipleAnswers } from "./components";
+import { SingleAnswers } from "./components";
 import { shuffleArray } from "../../utils/array";
 
 export const Answers = () => {

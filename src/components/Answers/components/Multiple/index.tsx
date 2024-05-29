@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Checkbox, Form, Space } from "antd";
-import { AnswersProps } from "../types";
+import { AnswersProps } from "../../types";
 
 export const MultipleAnswers: FC<AnswersProps> = ({ options }) => {
   return (

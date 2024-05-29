@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Form, Radio, Space } from "antd";
-import { AnswersProps } from "../types";
+import { AnswersProps } from "../../types";
 
 export const SingleAnswers: FC<AnswersProps> = ({ options }) => {
   return (
