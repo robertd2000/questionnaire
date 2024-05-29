@@ -36,13 +36,9 @@ test("rendering questions, select and move to next", async () => {
     )
   ).toBeInTheDocument();
 
-  const checkbox = screen.getByRole("checkbox", { name: /Gilbert Gottfried/i });
-
-  fireEvent.click(checkbox);
-
-  const submitButton = screen.getByRole("button", { name: /Send/i });
-
-  fireEvent.submit(submitButton);
+  //
+  fireEvent.click(screen.getByRole("checkbox", { name: /Gilbert Gottfried/i }));
+  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
 
   await delay(100);
 
@@ -52,6 +48,7 @@ test("rendering questions, select and move to next", async () => {
     )
   ).toBeInTheDocument();
 
+  //
   fireEvent.click(screen.getByRole("radio", { name: /True/i }));
   fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
 
