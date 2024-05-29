@@ -4,7 +4,7 @@ import base from "./base";
 export const getQuestions = async (): Promise<QuestionsQuery> => {
   const { data } = await base.get("/", {
     params: {
-      amount: 10,
+      amount: 20,
     },
   });
 
