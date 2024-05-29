@@ -1,6 +1,7 @@
 import { Typography } from "antd";
-import { getScoreColor } from "../../../../utils/check";
 import { useResults } from "../../hooks/useResults";
+import { getScoreColor } from "../../../../utils/check";
+import style from "../../../../styles/components/result/result.module.scss";
 
 export const ResultsHeader = () => {
   const { totalAmount, correct, correctPercent } = useResults();
@@ -18,22 +19,8 @@ export const ResultsHeader = () => {
         </span>
       </Typography.Title>
       <Typography.Title level={5}>
-        You've got correct answer to{" "}
-        <u
-          style={{
-            color: "rgb(22, 119, 255)",
-          }}
-        >
-          {correct}
-        </u>{" "}
-        question of total{" "}
-        <u
-          style={{
-            color: "rgb(22, 119, 255)",
-          }}
-        >
-          {totalAmount}
-        </u>
+        You've got correct answer to <u className={style.question}>{correct}</u>{" "}
+        question of total <u className={style.question}>{totalAmount}</u>
       </Typography.Title>
     </>
   );
