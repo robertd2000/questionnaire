@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 import { useResults } from "../../hooks/useResults";
-import { getScoreColor } from "../../../../utils/check";
+import { getScoreColor } from "../../../../utils/color";
 import style from "../../../../styles/components/result/result.module.scss";
 
 export const ResultsHeader = () => {

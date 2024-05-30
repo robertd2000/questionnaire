@@ -7,3 +7,13 @@ export const getColor = (difficulty: DifficultyType) => {
   else if (difficulty === "hard") return Colors.red;
   return Colors.darkGray;
 };
+
+export const getScoreColor = (score: number) => {
+  if (score > 70) {
+    return Colors.green;
+  } else if (score > 40) {
+    return Colors.orange;
+  } else if (score <= 40) {
+    return Colors.red;
+  }
+};
