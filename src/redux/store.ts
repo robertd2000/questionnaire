@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import questionsSlice from "./questions/slice";
-import { setupListeners } from "@reduxjs/toolkit/query";
 
 const store = configureStore({
   reducer: {

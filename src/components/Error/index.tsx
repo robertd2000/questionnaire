@@ -14,6 +14,7 @@ export const Error: FC<Props> = ({ errorMessage }) => {
   const reset = () => {
     dispatch(resetState());
   };
+
   return (
     <Card
       style={{
