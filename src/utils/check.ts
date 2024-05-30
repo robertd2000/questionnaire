@@ -1,5 +1,3 @@
-import { Colors } from "../constants";
-
 export const checkIsCorrect = (
   a: string | string[],
   b: string | string[]
@@ -11,14 +9,4 @@ export const checkIsCorrect = (
     return b.includes(a);
   }
   return a == b;
-};
-
-export const getScoreColor = (score: number) => {
-  if (score > 70) {
-    return Colors.green;
-  } else if (score > 40) {
-    return Colors.orange;
-  } else if (score <= 40) {
-    return Colors.red;
-  }
 };

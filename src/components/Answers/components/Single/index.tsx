@@ -8,7 +8,9 @@ export const SingleAnswers: FC<AnswersProps> = ({ options }) => {
       <Radio.Group>
         <Space direction="vertical">
           {options.map((option) => (
-            <Radio value={option}>{option}</Radio>
+            <Radio value={option} data-testid={option}>
+              {option}
+            </Radio>
           ))}
         </Space>
       </Radio.Group>

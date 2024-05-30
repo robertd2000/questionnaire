@@ -18,7 +18,7 @@ export const Spinner: FC<Props> = ({ size = 48 }) => {
         left: "50%",
       }}
     >
-      <Spin indicator={antIcon} size="large" />
+      <Spin indicator={antIcon} size="large" data-testid="spinner" />
     </div>
   );
 };
