@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./constants";
 import { fetchQuestions } from "./api/asyncActions";
 import { checkIsCorrect } from "../../utils/check";
-import { DifficultyType } from "../../types/questions";
+import { initialState } from "./constants";
 import { ERROR_MESSAGE } from "../../constants";
+import { DifficultyType } from "../../types/questions";
 
 export const questionsSlice = createSlice({
   name: "questions",

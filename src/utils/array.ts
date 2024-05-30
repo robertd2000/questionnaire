@@ -14,3 +14,7 @@ export const shuffleArray = (array: string[]): string[] => {
 
   return shuffled;
 };
+
+export const compaireArrays = (a: string[], b: string[]) => {
+  return a.length === b.length && a.every((value) => b.includes(value));
+};

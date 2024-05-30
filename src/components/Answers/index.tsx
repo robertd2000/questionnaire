@@ -1,21 +1,10 @@
-import { useMemo } from "react";
 import { ConfigProvider } from "antd";
-import { useAppSelector } from "../../redux/store";
 import { MultipleAnswers } from "./components";
 import { SingleAnswers } from "./components";
-import { shuffleArray } from "../../utils/array";
+import { useAnswers } from "./hooks/useAnswers";
 
 export const Answers = () => {
-  const { currentQuestion } = useAppSelector((state) => state.questionsSlice);
-
-  const anwers = useMemo(
-    () =>
-      shuffleArray([
-        ...(currentQuestion?.incorrect_answers as string[]),
-        currentQuestion?.correct_answer || "",
-      ]),
-    [currentQuestion]
-  );
+  const { anwers, questionType } = useAnswers();
 
   return (
     <ConfigProvider
@@ -25,7 +14,7 @@ export const Answers = () => {
         },
       }}
     >
-      {currentQuestion?.type === "multiple" ? (
+      {questionType === "multiple" ? (
         <MultipleAnswers options={anwers} />
       ) : (
         <SingleAnswers options={anwers} />

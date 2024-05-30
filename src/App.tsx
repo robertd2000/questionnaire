@@ -1,11 +1,11 @@
-import { Typography } from "antd";
 import { Providers } from "./components/Providers";
 import { Questions } from "./components/Questions";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <Providers>
-      <Typography.Title level={3}>Questionare</Typography.Title>
+      <Header />
       <Questions />
     </Providers>
   );
