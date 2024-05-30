@@ -10,7 +10,7 @@ export const Question = () => {
   return (
     <Card className={style.questionCard}>
       <>
-        <QuestionHeader currentQuestion={currentQuestion} />
+        <QuestionHeader difficulty={currentQuestion?.difficulty!} />
         <QuestionBody question={currentQuestion?.question} />
 
         <Answers />

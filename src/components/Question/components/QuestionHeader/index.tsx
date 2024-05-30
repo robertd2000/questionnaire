@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { Button, ConfigProvider, Popover, theme } from "antd";
 import { DifficultyBadge } from "../../../ui";
-import { DifficultyType, Question } from "../../../../types/questions";
+import { DifficultyType } from "../../../../types/questions";
 import style from "../../../../styles/components/question/question.module.scss";
 
 interface Props {
-  currentQuestion: Question | null;
+  difficulty: DifficultyType;
 }
 
-export const QuestionHeader: FC<Props> = ({ currentQuestion }) => {
+export const QuestionHeader: FC<Props> = ({ difficulty }) => {
   return (
     <ConfigProvider
       theme={{
@@ -21,9 +21,7 @@ export const QuestionHeader: FC<Props> = ({ currentQuestion }) => {
         }
         content={
           <div className={style.questionPopoverContent}>
-            <DifficultyBadge
-              difficulty={currentQuestion?.difficulty as DifficultyType}
-            />
+            <DifficultyBadge difficulty={difficulty} />
             <p className={style.questionPopoverDescription}>
               Difficulty is based on the ratio of correct attempts to all
               attempts made by those answering the question.
@@ -33,9 +31,7 @@ export const QuestionHeader: FC<Props> = ({ currentQuestion }) => {
         placement="bottom"
       >
         <Button type="text" className={style.questionPopoverInner}>
-          <DifficultyBadge
-            difficulty={currentQuestion?.difficulty as DifficultyType}
-          />
+          <DifficultyBadge difficulty={difficulty} />
         </Button>
       </Popover>
     </ConfigProvider>
