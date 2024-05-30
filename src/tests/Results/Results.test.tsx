@@ -1,29 +1,7 @@
-import { fireEvent, screen } from "@testing-library/react";
-import { HttpResponse, delay, http } from "msw";
+import { act, fireEvent, screen } from "@testing-library/react";
+import { delay } from "msw";
 import { renderWithProviders } from "../utils/test-utils";
-import { setupServer } from "msw/node";
-import { BASE_URL } from "../../constants";
-import { mockQuestions } from "../mocks/questions";
 import App from "../../App";
-
-export const handlers = [
-  http.get(`${BASE_URL}?amount=10`, async () => {
-    await delay(100);
-
-    return HttpResponse.json(mockQuestions);
-  }),
-];
-
-const server = setupServer(...handlers);
-
-// Enable API mocking before tests.
-beforeAll(() => server.listen());
-
-// Reset any runtime request handlers we may add during the tests.
-afterEach(() => server.resetHandlers());
-
-// Disable API mocking after the tests are done.
-afterAll(() => server.close());
 
 test("test result", async () => {
   renderWithProviders(<App />);
@@ -37,8 +15,12 @@ test("test result", async () => {
   ).toBeInTheDocument();
 
   //1
-  fireEvent.click(screen.getByRole("checkbox", { name: /Gilbert Gottfried/i }));
-  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
+  act(() =>
+    fireEvent.click(
+      screen.getByRole("checkbox", { name: /Gilbert Gottfried/i })
+    )
+  );
+  act(() => fireEvent.submit(screen.getByRole("button", { name: /Send/i })));
 
   await delay(150);
 
@@ -49,16 +31,16 @@ test("test result", async () => {
   ).toBeInTheDocument();
 
   //2
-  fireEvent.click(screen.getByRole("radio", { name: /True/i }));
-  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
+  act(() => fireEvent.click(screen.getByRole("radio", { name: /True/i })));
+  act(() => fireEvent.submit(screen.getByRole("button", { name: /Send/i })));
 
   await delay(200);
 
   expect(await screen.getByText(/Langerhans/i)).toBeInTheDocument();
 
   //3
-  fireEvent.click(screen.getByRole("checkbox", { name: /Kidney/i }));
-  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
+  act(() => fireEvent.click(screen.getByRole("checkbox", { name: /Kidney/i })));
+  act(() => fireEvent.submit(screen.getByRole("button", { name: /Send/i })));
 
   await delay(250);
 
@@ -69,8 +51,10 @@ test("test result", async () => {
   ).toBeInTheDocument();
 
   //4
-  fireEvent.click(screen.getByRole("checkbox", { name: /Tino Martinez/i }));
-  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
+  act(() =>
+    fireEvent.click(screen.getByRole("checkbox", { name: /Tino Martinez/i }))
+  );
+  act(() => fireEvent.submit(screen.getByRole("button", { name: /Send/i })));
 
   await delay(300);
 
@@ -80,11 +64,17 @@ test("test result", async () => {
     )
   ).toBeInTheDocument();
 
-  //4
-  fireEvent.click(screen.getByRole("checkbox", { name: /Blueberry/i }));
-  fireEvent.submit(screen.getByRole("button", { name: /Send/i }));
+  //5
+  act(() =>
+    fireEvent.click(screen.getByRole("checkbox", { name: /Blueberry/i }))
+  );
+  act(() => fireEvent.submit(screen.getByRole("button", { name: /Send/i })));
 
   await delay(300);
 
-  expect(await screen.getByText(/Your score:/i)).toBeInTheDocument();
+  const scoreHeader = await screen.getByText(/Your score:/i);
+
+  expect(scoreHeader).toBeInTheDocument();
+
+  expect(scoreHeader).toHaveTextContent("Your score: 40.00 %");
 });
