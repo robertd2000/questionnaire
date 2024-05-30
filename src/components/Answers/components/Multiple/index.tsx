@@ -9,7 +9,7 @@ export const MultipleAnswers: FC<AnswersProps> = ({ options }) => {
         <Space direction="vertical">
           {options.map((option) => (
             <Checkbox value={option} data-testid={option}>
-              {option}
+              <span dangerouslySetInnerHTML={{ __html: option }}></span>
             </Checkbox>
           ))}
         </Space>
