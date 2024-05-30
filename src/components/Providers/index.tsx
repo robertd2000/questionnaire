@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { ProviderProps } from "./types";
 import { StoreProvider } from "./Store";
 import { AntdProvider } from "./Antd";
+import { ProviderProps } from "./types";
 
 export const Providers: FC<ProviderProps> = ({ children }) => {
   return (
