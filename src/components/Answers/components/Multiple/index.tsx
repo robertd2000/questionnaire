@@ -8,7 +8,7 @@ export const MultipleAnswers: FC<AnswersProps> = ({ options }) => {
       <Checkbox.Group>
         <Space direction="vertical">
           {options.map((option) => (
-            <Checkbox value={option} data-testid={option}>
+            <Checkbox value={option} data-testid={option} data-cy="answer">
               <span dangerouslySetInnerHTML={{ __html: option }}></span>
             </Checkbox>
           ))}

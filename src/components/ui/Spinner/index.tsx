@@ -1,6 +1,6 @@
+import { FC } from "react";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { FC } from "react";
 
 interface Props {
   size?: number;
